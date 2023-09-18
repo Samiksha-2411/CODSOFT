@@ -1,0 +1,104 @@
+package com.atm;
+
+import java.util.Scanner;
+
+public class Atm1 {
+	public static void main(String[] args) {
+		Account1 a = new Account1(1234, "samu", 111, 1234567891, 1000);
+		System.out.println("1.withdraw 2.deposit 3.check 4.exit");
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		switch (num) {
+		case 1:
+			System.out.println(a.withdraw());
+			break;
+		case 2:
+			System.out.println(a.Deposit());
+			break;
+		case 3:
+			System.out.println(a.Checkbal());
+			break;
+		case 4:
+			System.out.println(a.Exit());
+			break;
+		}
+
+	}
+}
+
+class Account1 {
+	private int accno;
+	private String name;
+	private int pswd;
+	private int cno;
+	private double bal;
+
+	public Account1(int a, String n, int p, int c, double b) {
+		accno = a;
+		name = n;
+		pswd = p;
+		cno = c;
+		bal = b;
+	}
+
+	Scanner sc = new Scanner(System.in);
+
+	public int withdraw() {
+
+		System.out.println("enter account number");
+		int ac = sc.nextInt();
+		System.out.println("enter password");
+		int ps = sc.nextInt();
+		if (ac == accno && pswd == ps) {
+			System.out.println("enter ammount to withdraw ");
+			int money = sc.nextInt();
+			if (money < bal) {
+				System.out.println("money withdraw successfully .....and remaining balance is:" + (bal - money));
+			} else {
+				System.out.println("something went wrong...try again");
+				System.out.println("enter ammount to withdraw ");
+				int money1 = sc.nextInt();
+				if (money1 < bal) {
+					System.out.println("money withdraw successfully .....and remaining balance is:" + (bal - money1));
+				}
+			}
+		}
+		return 0;
+
+	}
+
+	public int Deposit() {
+		System.out.println("enter account number");
+		int ac = sc.nextInt();
+		System.out.println("enter password");
+		int ps = sc.nextInt();
+		if (ac == accno && pswd == ps) {
+			System.out.println("enter money to deposit");
+			double amt = sc.nextDouble();
+			bal = bal + amt;
+			System.out.println("money after depositing the amount is:" + bal);
+
+		}
+		return 0;
+	}
+
+	public int Checkbal() {
+		System.out.println("enter account number");
+		int ac = sc.nextInt();
+		System.out.println("enter password");
+		int ps = sc.nextInt();
+		if (ac == accno && pswd == ps) {
+			System.out.println("your current balance is:" + bal);
+
+		}
+		return 0;
+	}
+
+	public int Exit() {
+		{
+			System.out.println("thank you....");
+			return 0;
+		}
+
+	}
+}
